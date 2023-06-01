@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-const verifyIsLoggedIn = (req, res, next) => {
+const verifyIsLoggedIn = (req, res, next) => { 
     try {
         const token = req.cookies.access_token
         if(!token) {
