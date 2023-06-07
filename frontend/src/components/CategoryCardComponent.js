@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 const CategoryCardComponent = ({ category, idx }) => {
   
   return (
-    <Card>
+    <Card style={{ width: '26rem', margin: '12px' }}>
       <Card.Img crossOrigin="anonymous" variant="top" src={category.image ?? null} />
       <Card.Body>
         <Card.Title>{category.name}</Card.Title>

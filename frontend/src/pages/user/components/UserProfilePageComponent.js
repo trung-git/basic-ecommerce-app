@@ -180,10 +180,10 @@ const UserProfilePageComponent = ({ updateUserApiRequest, fetchUser, userInfoFro
             <Button variant="primary" type="submit">
               Update
             </Button>
-            <Alert show={updateUserResponseState && updateUserResponseState.error !== ""} variant="danger">
+            <Alert className="mt-3" show={updateUserResponseState && updateUserResponseState.error !== ""} variant="danger">
               Something went wrong
             </Alert>
-            <Alert show={updateUserResponseState && updateUserResponseState.success === "user updated"} variant="info">
+            <Alert className="mt-3" show={updateUserResponseState && updateUserResponseState.success === "user updated"} variant="info">
               User updated
             </Alert>
           </Form>

@@ -99,6 +99,7 @@ const LoginPageComponent = ({ loginUserApiRequest,reduxDispatch, setReduxUserSta
               Login
             </Button>
             <Alert
+              className="mt-3"
               show={
                 loginUserResponseState &&
                 loginUserResponseState.error === "wrong credentials"

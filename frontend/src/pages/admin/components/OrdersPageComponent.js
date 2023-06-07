@@ -1,11 +1,16 @@
-import { Row, Col, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import AdminLinksComponent from "../../../components/admin/AdminLinksComponent";
+import { Row, Col, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import AdminLinksComponent from '../../../components/admin/AdminLinksComponent';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { logout } from "../../../redux/actions/userActions";
-import { useDispatch } from "react-redux";
+import { logout } from '../../../redux/actions/userActions';
+import { useDispatch } from 'react-redux';
+
+const PAYMENT_METHOD = {
+  pp: 'Paypal',
+  cod: 'Cash On Delivery',
+};
 
 const OrdersPageComponent = ({ getOrders }) => {
   const [orders, setOrders] = useState([]);
@@ -13,16 +18,16 @@ const OrdersPageComponent = ({ getOrders }) => {
   useEffect(() => {
     getOrders()
       .then((orders) => setOrders(orders))
-      .catch((er) =>
-      dispatch(logout())
+      .catch(
+        (er) => dispatch(logout())
         // console.log(
         //   er.response.data.message ? er.response.data.message : er.response.data
         // )
       );
   }, []);
-  
+
   return (
-    <Row className="m-5">
+    <Row className='m-5'>
       <Col md={2}>
         <AdminLinksComponent />
       </Col>
@@ -55,12 +60,16 @@ const OrdersPageComponent = ({ getOrders }) => {
                 <td>{order.orderTotal.cartSubtotal}</td>
                 <td>
                   {order.isDelivered ? (
-                    <i className="bi bi-check-lg text-success"></i>
+                    <i className='bi bi-check-lg text-success'></i>
                   ) : (
-                    <i className="bi bi-x-lg text-danger"></i>
+                    <i className='bi bi-x-lg text-danger'></i>
                   )}
                 </td>
-                <td>{order.paymentMethod}</td>
+                <td>
+                  {Object.keys(PAYMENT_METHOD).includes(order.paymentMethod)
+                    ? PAYMENT_METHOD[order.paymentMethod]
+                    : order.paymentMethod}
+                </td>
                 <td>
                   <Link to={`/admin/order-details/${order._id}`}>
                     go to order
@@ -76,4 +85,3 @@ const OrdersPageComponent = ({ getOrders }) => {
 };
 
 export default OrdersPageComponent;
-
