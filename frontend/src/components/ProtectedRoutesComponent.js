@@ -25,7 +25,7 @@ const ProtectedRoutesComponent = ({ admin }) => {
       <Outlet />
   ) : isAuth && !admin ? (
       <>
-      <UserChatComponent />
+      {/* <UserChatComponent /> */}
       <Outlet />
       </>
   ) : (

@@ -4,7 +4,8 @@ import UserChatComponent from "./UserChatComponent";
 const RoutesWithUserChatComponent = () => {
   return (
     <>
-      <UserChatComponent /> <Outlet />
+      {/* <UserChatComponent />  */}
+      <Outlet />
     </>
   );
 };
